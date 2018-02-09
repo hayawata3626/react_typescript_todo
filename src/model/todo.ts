@@ -1,7 +1,6 @@
 export enum Status {
   Active,       // 0
   Completed,    // 1
-  Checkout      // 2
 }
 
 export class Todo {
@@ -13,9 +12,6 @@ export class Todo {
   }
   public toCompleted(){
     this.status = Status.Completed
-  }
-  public toCheckout(){
-    this.status = Status.Checkout
   }
   public toActive(){
     this.status = Status.Active
