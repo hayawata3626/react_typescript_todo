@@ -1,21 +1,53 @@
 .card {
+  position: relative;
   margin-bottom: 30px;
-  background: #fff;
   padding: 30px;
+  background: #fff;
 }
 
 .card_title {
   border-bottom: 2px solid gray;
 }
 
-.complete_button {
+.card_button {
+  padding: 10px;
   border: none;
+  background: gray;
   color: #fff;
   cursor: pointer;
-  background: gray;
-  padding: 10px;
 }
 
-.card_description{
+.card_closeButton {
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  width: 40px;
+  height: 40px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.card_closeButton:before {
+  display: block;
+  content: "X";
+}
+
+.card_button + .card_button {
+  margin-left: 20px;
+}
+
+.card_button.is-active {
+  background: red;
+}
+
+.card_button.is-completed {
+  background: gray;
+}
+
+.card_description {
   margin: 20px 0;
 }
