@@ -1,0 +1,21 @@
+.card {
+  margin-bottom: 30px;
+  background: #fff;
+  padding: 30px;
+}
+
+.card_title {
+  border-bottom: 2px solid gray;
+}
+
+.complete_button {
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background: gray;
+  padding: 10px;
+}
+
+.card_description{
+  margin: 20px 0;
+}
