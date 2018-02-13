@@ -6,6 +6,7 @@ export enum Status {
 export class Todo {
   public description: string;
   public status = Status.Active;
+  public editable = false;
 
   constructor( description: string ) {
     this.description = description

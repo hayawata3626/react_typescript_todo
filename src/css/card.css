@@ -5,6 +5,13 @@
   background: #fff;
 }
 
+.card_writeArea {
+  display: block;
+  margin: 20px 0;
+  width: 200px;
+  padding: 10px;
+}
+
 .card_title {
   border-bottom: 2px solid gray;
 }

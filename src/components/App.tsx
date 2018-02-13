@@ -47,6 +47,16 @@ class App extends React.Component {
     })
   }
 
+  public changeEditStatus(todo: Todo){
+    todo.editable = !todo.editable;
+    this.updateState();
+  }
+
+  public changeText(text: string, todo: Todo){
+    todo.description = text;
+    this.updateState();
+  }
+
   public render() {
     return (
       <div className="App">
@@ -61,6 +71,8 @@ class App extends React.Component {
               ? <Card key={index} todo={todo}
                   changeStatus={this.changeStatus.bind(this)}
                   removeCard={this.removeCard.bind(this)}
+                  changeEditStatus={this.changeEditStatus.bind(this)}
+                  changeText={this.changeText.bind(this)}
                 />
               : "";
             })}
@@ -72,6 +84,8 @@ class App extends React.Component {
               ? <Card key={index} todo={todo}
                   changeStatus={this.changeStatus.bind(this)}
                   removeCard={this.removeCard.bind(this)}
+                  changeEditStatus={this.changeEditStatus.bind(this)}
+                  changeText={this.changeText.bind(this)}
                 />
               : "";
             })}
