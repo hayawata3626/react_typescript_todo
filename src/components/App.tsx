@@ -16,6 +16,7 @@ class App extends React.Component {
       todos: [new Todo("Eat ramen")]
     }
   }
+
   public updateState(){
     this.setState({
       todos: this.state.todos
@@ -36,9 +37,14 @@ class App extends React.Component {
     todo.status = cardstatus;
     this.updateState();
   }
+
   public removeCard(targetTodo: Todo){
-    this.state.todos.splice(this.state.todos["targetTodo"], 1);
-    this.updateState();
+    let remainingTask = this.state.todos.filter((todo, id) => {
+        return targetTodo !== todo;
+    })
+    this.setState({
+      todos: remainingTask
+    })
   }
 
   public render() {
