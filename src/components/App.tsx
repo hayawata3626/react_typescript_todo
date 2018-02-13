@@ -16,6 +16,11 @@ class App extends React.Component {
       todos: [new Todo("Eat ramen")]
     }
   }
+  public updateState(){
+    this.setState({
+      todos: this.state.todos
+    })
+  }
 
   public addTodo() {
     const inputElm = ReactDOM.findDOMNode(this.refs.description) as HTMLInputElement;
@@ -29,9 +34,11 @@ class App extends React.Component {
 
   public changeStatus(todo:Todo, cardstatus:Status) {
     todo.status = cardstatus;
-    this.setState({
-      todos: this.state.todos
-    })
+    this.updateState();
+  }
+  public removeCard(targetTodo: Todo){
+    this.state.todos.splice(this.state.todos["targetTodo"], 1);
+    this.updateState();
   }
 
   public render() {
@@ -47,6 +54,7 @@ class App extends React.Component {
               return todo.status === Status.Active
               ? <Card key={index} todo={todo}
                   changeStatus={this.changeStatus.bind(this)}
+                  removeCard={this.removeCard.bind(this)}
                 />
               : "";
             })}
@@ -57,6 +65,7 @@ class App extends React.Component {
               return todo.status === Status.Completed
               ? <Card key={index} todo={todo}
                   changeStatus={this.changeStatus.bind(this)}
+                  removeCard={this.removeCard.bind(this)}
                 />
               : "";
             })}
