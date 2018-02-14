@@ -12,6 +12,13 @@ body, html, h1, h2, h3, p {
 .taskName {
   padding: 10px;
   font-size: 20px;
+  display: block;
+}
+
+.taskDeadline {
+  padding: 10px;
+  font-size: 18px;
+  margin-top: 20px;
 }
 
 .App h1 {
