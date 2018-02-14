@@ -13,7 +13,7 @@ class App extends React.Component {
   constructor(props:any) {
     super(props);
     this.state = {
-      todos: [new Todo("Eat ramen")],
+      todos: [],
       alertmessage: false,
     }
   }
@@ -26,16 +26,15 @@ class App extends React.Component {
 
   public addTodo() {
     const inputElm = ReactDOM.findDOMNode(this.refs.description) as HTMLInputElement;
+    const inputDate = ReactDOM.findDOMNode(this.refs.date) as HTMLInputElement;
     if(inputElm.value === "") {
       this.setState({
         alertmessage: true,
       })
       return;
     }
-    this.state.todos.push(new Todo(inputElm.value))
-    this.setState({
-      todos: this.state.todos
-    })
+    this.state.todos.push(new Todo(inputElm.value, inputDate.value))
+    this.updateState();
     inputElm.value = "";
   }
 
@@ -77,6 +76,12 @@ class App extends React.Component {
           })}
         />
         {this.state.alertmessage ? <p className="inputfield alert">文字を入力してください</p> : ""}
+        <input
+          type="date"
+          className="taskDeadline"
+          name="example2"
+          ref="date"
+        />
         <button className="submitButton" onClick={this.addTodo.bind(this)}>Submit</button>
         <div className="todo">
           <div className="list active">

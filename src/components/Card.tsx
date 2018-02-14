@@ -28,6 +28,10 @@ export class Card extends React.Component<Props> {
             onClick={() => this.props.changeEditStatus(this.props.todo)}>{this.props.todo.description}
           </h3>
         }
+        <div className="card_deadline">
+          <i className="far fa-clock"></i>
+          <p className="card_deadline_detail">{this.props.todo.taskDeadline}</p>
+        </div>
         <div
           className="card_closeButton"
           onClick={() => this.props.removeCard(this.props.todo)}>
