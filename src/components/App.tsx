@@ -9,11 +9,12 @@ import '../css/App.css';
 import '../css/list.css';
 
 class App extends React.Component {
-  public state: {todos:Todo[]}
+  public state: {todos:Todo[], alertmessage: boolean}
   constructor(props:any) {
     super(props);
     this.state = {
-      todos: [new Todo("Eat ramen")]
+      todos: [new Todo("Eat ramen")],
+      alertmessage: false,
     }
   }
 
@@ -25,7 +26,12 @@ class App extends React.Component {
 
   public addTodo() {
     const inputElm = ReactDOM.findDOMNode(this.refs.description) as HTMLInputElement;
-    if(inputElm.value === "") return;
+    if(inputElm.value === "") {
+      this.setState({
+        alertmessage: true,
+      })
+      return;
+    }
     this.state.todos.push(new Todo(inputElm.value))
     this.setState({
       todos: this.state.todos
@@ -61,7 +67,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>TodoList</h1>
-        <input type="input" className="taskName" placeholder="タスク名" ref="description" />
+        <input
+          type="input"
+          className="taskName"
+          placeholder="タスク名"
+          ref="description"
+          onFocus={() => this.setState({
+            alertmessage: false
+          })}
+        />
+        {this.state.alertmessage ? <p className="inputfield alert">文字を入力してください</p> : ""}
         <button className="submitButton" onClick={this.addTodo.bind(this)}>Submit</button>
         <div className="todo">
           <div className="list active">
