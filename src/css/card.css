@@ -3,6 +3,11 @@
   margin-bottom: 30px;
   padding: 30px;
   background: #fff;
+  transition: all .5s;
+}
+
+.card:hover {
+  background: #edeff0;
 }
 
 .card_writeArea {
@@ -58,4 +63,5 @@
 
 .card_description {
   margin: 20px 0;
+  cursor: pointer;
 }

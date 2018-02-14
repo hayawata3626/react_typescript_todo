@@ -31,6 +31,10 @@ body, html, h1, h2, h3, p {
   font-size: large;
 }
 
+.inputfield.alert {
+  color: red;
+}
+
 .submitButton {
   display: block;
   margin-top: 20px;
