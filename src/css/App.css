@@ -42,31 +42,3 @@ body, html, h1, h2, h3, p {
   color: red;
 }
 
-.submitButton {
-  display: block;
-  margin-top: 20px;
-  padding: 20px;
-  width: 150px;
-  border: none;
-  background: gray;
-  color: #fff;
-  cursor: pointer;
-}
-
-.todo {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 60px;
-  border: 1px solid #323232;
-}
-
-.todo > h2 {
-  position: absolute;
-  top: 0;
-  left:0;
-}
-
-.todo > h3 {
-  font-size: 20px;
-}

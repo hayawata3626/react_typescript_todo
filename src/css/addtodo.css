@@ -1,0 +1,10 @@
+.submitButton {
+  display: block;
+  margin-top: 20px;
+  padding: 20px;
+  width: 150px;
+  border: none;
+  background: gray;
+  color: #fff;
+  cursor: pointer;
+}

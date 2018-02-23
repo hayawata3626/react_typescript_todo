@@ -2,3 +2,30 @@
 	background: #fff;
 	padding: 30px;
 }
+
+.todos {
+	padding: 0;
+}
+
+.todo {
+	background: #fff;
+	margin-top: 60px;
+	list-style: none;
+	padding: 30px;
+	position: relative;
+}
+
+.todo_closeButton {
+	width: 30px;
+	background: #323232;
+	position: absolute;
+	height: 30px;
+	color: #fff;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	right: 10px;
+	top: 10px;
+	cursor: pointer;
+}
