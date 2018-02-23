@@ -1,13 +1,22 @@
 import { Todo } from "../model/todo";
-import { AddTodoAction } from "../actions";
+import { State, initialState } from "../state";
+// import { AddTodoAction } from "../actions";
 
-const todos = (state:Todo[] = [], action:AddTodoAction) => {
+
+const todos = (state:State = initialState, action:any):State => {
 	switch(action.type) {
 		case 'ADD_TODO':
-			return [
+			return {
 				...state,
-				new Todo(action.description, action.taskDeadline),
-			] 
+				todos:state.todos.concat(new Todo(action.id, action.description)),
+			}
+		case 'DELETE_TODO':
+			return {
+				...state,
+				todos:state.todos.filter((todo) => {
+					return todo.id !== action.id
+				})
+			}
 			
 		default:
 			return state

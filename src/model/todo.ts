@@ -1,14 +1,9 @@
-// export enum Status {
-//   Active,       // 0
-//   Completed,    // 1
-// }
-
 export class Todo {
-  public description: string;
-  public taskDeadline: string;
+	public description: string;
+	public id: number
 
-  constructor( description: string, taskDeadline:string ) {
-    this.description = description
-    this.taskDeadline = taskDeadline
+  constructor(id: number, description: string ) {
+		this.id = id
+		this.description = description
   }
 }

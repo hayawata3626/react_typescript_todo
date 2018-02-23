@@ -1,17 +1,27 @@
 import { connect } from 'react-redux'
-import TodoList from '../components/TodoList'
-import { Todo } from "../model/todo";
-export interface AddTodoAction {
-  todos: Todo[]
-}
+import TodoList, { StateFromProps, DispatchFromProps } from '../components/TodoList'
+import { Dispatch } from 'react-redux';
+import { deleteTodo, DeleteTodoAction } from '../actions'
+import { State } from '../state';
 
-let mapStateToProps = (state: AddTodoAction) => {
+
+let mapStateToProps = (state: State):StateFromProps => {
 	return {todos: state.todos}
 }
 
 
-const VisibleTodoList = connect(
-	mapStateToProps
+const deleteDispatchToProps = (dispatch: Dispatch<DeleteTodoAction>):DispatchFromProps => {
+  return {
+    onDeleteTodo: (id: number) => {
+      dispatch(deleteTodo(id))
+    }
+  }
+}
+
+const VisibleTodoList = connect<StateFromProps, DispatchFromProps>(
+	mapStateToProps,
+	deleteDispatchToProps
 )(TodoList)
+
 
 export default VisibleTodoList
