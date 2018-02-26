@@ -1,5 +1,5 @@
 import { Todo } from "../model/todo";
-import { State, initialState } from "../state";
+import { State, initialState } from "../model/todo";
 // import { AddTodoAction } from "../actions";
 
 
@@ -8,7 +8,7 @@ const todos = (state:State = initialState, action:any):State => {
 		case 'ADD_TODO':
 			return {
 				...state,
-				todos:state.todos.concat(new Todo(action.id, action.description)),
+				todos:state.todos.concat(new Todo(action.id, action.description, action.editable)),
 			}
 		case 'DELETE_TODO':
 			return {
@@ -17,7 +17,6 @@ const todos = (state:State = initialState, action:any):State => {
 					return todo.id !== action.id
 				})
 			}
-			
 		default:
 			return state
 	}

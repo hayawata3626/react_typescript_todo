@@ -9,10 +9,10 @@ interface ItemProps {
 
 const TodoItem = ({todo, onDeleteTodo}:ItemProps) => {
 	return (
-		<div className="todo">
+		<li className="todo">
 			<div className="todo_closeButton" onClick={() => onDeleteTodo(todo.id)}>ｘ</div>
-			<li>{todo.description}</li>
-		</div>
+			<p>{todo.description}</p>
+		</li>
 	)
 }
 

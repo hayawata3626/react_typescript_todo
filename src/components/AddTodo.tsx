@@ -5,7 +5,7 @@ const AddTodo = ({onTodoClick}: any) => {
 	let input:any
 	return(
 		<div>
-		<form 
+		<form
 			className="addtodo"
 			onSubmit={e => {
 				e.preventDefault()
