@@ -1,7 +1,7 @@
 export class Todo {
 	public description: string;
 	public id: number
-	public editable: false
+	public editable: boolean;
 
   constructor(id: number, description: string, editable:boolean) {
 		this.id = id
@@ -15,6 +15,6 @@ export interface State {
 }
 
 export const initialState:State = {
-	todos:[],
+	todos:[]
 }
 

@@ -10,9 +10,11 @@ export interface StateFromProps {
 
 export interface DispatchFromProps  {
 	onDeleteTodo: (id:number) => void;
+  onToggleTodoEditable: (id:number) => void;
+  onEditTodo: (id:number, description:string) => void;
 }
 
-const TodoList = ({todos, onDeleteTodo}:StateFromProps & DispatchFromProps) => {
+const TodoList = ({todos, onDeleteTodo, onEditTodo, onToggleTodoEditable}:StateFromProps & DispatchFromProps) => {
 	return(
 		<ul className="todos">
 			{todos.map((todo:Todo) => {
@@ -21,6 +23,8 @@ const TodoList = ({todos, onDeleteTodo}:StateFromProps & DispatchFromProps) => {
 						key={todo.id}
 						todo={todo}
 						onDeleteTodo={onDeleteTodo}
+            onEditTodo={onEditTodo}
+            onToggleTodoEditable={onToggleTodoEditable}
 					/>
 				)
 			}

@@ -32,10 +32,17 @@ export const deleteTodo = (id: number) => {
 	}
 }
 
-export const editTodo = (id:number) => {
+export const editTodo = (id: number, description:string) => {
 	return {
 		type: 'EDIT_TODO',
-		id,
-		editable:false
+    id,
+    description
+	}
+}
+
+export const toggleEditable = (id: number) => {
+	return {
+		type: 'TOGGLE_EDITABLE',
+		id
 	}
 }
