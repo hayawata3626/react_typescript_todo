@@ -15,6 +15,12 @@
 	position: relative;
 }
 
+.todo_date {
+  color: blueviolet;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
 .todo_closeButton {
 	width: 30px;
 	background: #323232;
