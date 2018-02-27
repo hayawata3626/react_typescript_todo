@@ -8,7 +8,7 @@ const todos = (state:State = initialState, action:any):State => {
     case 'ADD_TODO':
       return {
         ...state,
-        todos:state.todos.concat(new Todo(action.id, action.description, action.editable)),
+        todos:state.todos.concat(new Todo(action.id, action.description, action.editable, action.date)),
     }
     case 'DELETE_TODO':
       return {
