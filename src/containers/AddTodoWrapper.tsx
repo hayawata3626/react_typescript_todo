@@ -5,8 +5,8 @@ import AddTodo from '../components/AddTodo';
 
 const mapDispatchToProps = (dispatch: Dispatch<AddTodoAction>) => {
   return {
-    onTodoClick: (text: string) => {
-      dispatch(addTodo(text))
+    onTodoClick: (text: string, date:Date) => {
+      dispatch(addTodo(text, date))
     }
   }
 }

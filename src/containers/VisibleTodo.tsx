@@ -1,16 +1,15 @@
 import { connect } from 'react-redux'
 import TodoList, { StateFromProps, DispatchFromProps } from '../components/TodoList'
 import { Dispatch } from 'react-redux';
-import { deleteTodo, toggleEditable, editTodo, DeleteTodoAction } from '../actions'
+import { deleteTodo, toggleEditable, editTodo } from '../actions'
 import { State } from '../model/todo';
+import { Action } from 'redux';
 
 
 let mapStateToProps = (state: State):StateFromProps => {
 	return {todos: state.todos}
 }
-
-
-const deleteDispatchToProps = (dispatch: Dispatch<DeleteTodoAction>):DispatchFromProps => {
+const deleteDispatchToProps = (dispatch: Dispatch<Action>):DispatchFromProps => {
   return {
 		onDeleteTodo: (id: number) => {dispatch(deleteTodo(id))},
     onToggleTodoEditable: (id: number) => {dispatch(toggleEditable(id))},
@@ -22,6 +21,5 @@ const VisibleTodoList = connect<StateFromProps, DispatchFromProps>(
 	mapStateToProps,
 	deleteDispatchToProps
 )(TodoList)
-
 
 export default VisibleTodoList
