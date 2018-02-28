@@ -14,10 +14,20 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: Item
   return (
     <li className="todo">
       {todo.editable
-        ? <input type="text" className="todo_editarea" defaultValue={todo.description} onBlur={(e) => onToggleTodoEditable(todo.id)} onChange={(e) => onEditTodo(todo.id, e.target.value)} />
+        ? <input
+            type="text"
+            className="todo_editarea"
+            defaultValue={todo.description}
+            onChange={(e) => onEditTodo(todo.id, e.target.value)}
+          />
         : <h2>{todo.description}</h2>
       }
-      <p className="todo_editButton" onClick={() => onToggleTodoEditable(todo.id)}>編集</p>
+      <p className="todo_Button" onClick={() => onToggleTodoEditable(todo.id)}>
+      {todo.editable
+        ? <span className="todo_Button_item is-completed">完了</span>
+        : <span className="todo_Button_item is-edit">編集</span>
+      }
+      </p>
       <p className="todo_date">{date}</p>
       <div className="todo_closeButton" onClick={() => onDeleteTodo(todo.id)} >ｘ</div>
       <select className="todo_priority" name="priority" id="name">
