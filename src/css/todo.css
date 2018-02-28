@@ -35,20 +35,34 @@
 	cursor: pointer;
 }
 
-.todo_editButton {
+.todo_Button {
 	width: 80px;
-	padding: 10px;
 	text-align: center;
 	border-radius: 10px;
-	background:gray;
 	color: #fff;
 	cursor: pointer;
 	margin: 20px 0;
 }
 
+.todo_Button_item {
+  width: 100%;
+  padding: 10px;
+  display: inline-block;
+}
+
+.todo_Button_item.is-completed{
+  background:blueviolet;
+}
+
+.todo_Button_item.is-edit{
+  background: #686868;
+}
+
 .todo_editarea {
-	padding: 10px;
-	font-size: 20px;
+  padding: 10px;
+  width: 100%;
+  font-size: 20px;
+  display: inline-block;
 }
 
 .todo_priority {
