@@ -9,15 +9,11 @@ interface ItemProps {
   onToggleTodoEditable: (id: number) => void;
 }
 
-let nowDate = new Date();
-
 const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: ItemProps) => {
-  const newDate = new Date(todo.date as Date);
-  const year = newDate.getFullYear();
-  const month = newDate.getMonth() +1;
-  const day = newDate.getDate();
-  let diff = nowDate.getTime() - newDate.getTime();
-  let diffDay = Math.floor(diff / 86400000);
+  const todoDate = new Date(todo.date as Date);
+  const year = todoDate.getFullYear();
+  const month = todoDate.getMonth() +1;
+  const day = todoDate.getDate();
 
   return (
     <li className="todo">
@@ -32,7 +28,7 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: Item
       }
       <div className="todo_Button" onClick={() => onToggleTodoEditable(todo.id)}>
       {todo.editable
-        ? <div>
+        ? <div className="todo_editArea">
             <span className="todo_Button_item is-completed">保存</span>
             <span className="todo_Button_item is-cancel">キャンセル</span>
           </div>
@@ -40,7 +36,6 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: Item
       }
       </div>
       <p className="todo_date">登録日：{year + "/" + month + "/" + day}</p>
-      <p>差：{diffDay}</p>
       <div className="todo_closeButton" onClick={() => onDeleteTodo(todo.id)} >ｘ</div>
       <select className="todo_priority" name="priority" id="name">
         <option value="Large">Large</option>
