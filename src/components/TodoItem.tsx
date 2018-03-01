@@ -8,22 +8,16 @@ interface ItemProps {
   onEditTodo: (id: number, description: string) => void;
   onToggleTodoEditable: (id: number) => void;
 }
+
 let nowDate = new Date();
-//アクセスした時に現時刻を取得
-function getTimewnow(){
-  console.log(nowDate, "アクセスしました");
-}
-window.onload = () => getTimewnow()
 
 const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: ItemProps) => {
-  const date:any = todo.date.toString();
-  const newDate = new Date(date);
+  const newDate = new Date(todo.date as Date);
   const year = newDate.getFullYear();
   const month = newDate.getMonth() +1;
   const day = newDate.getDate();
-
   let diff = nowDate.getTime() - newDate.getTime();
-  let diffDay = Math.ceil(diff / 1000*60*60*24);
+  let diffDay = Math.floor(diff / 86400000);
 
   return (
     <li className="todo">
@@ -36,16 +30,16 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: Item
           />
         : <h2>{todo.description}</h2>
       }
-      <p className="todo_Button" onClick={() => onToggleTodoEditable(todo.id)}>
+      <div className="todo_Button" onClick={() => onToggleTodoEditable(todo.id)}>
       {todo.editable
         ? <div>
-          <span className="todo_Button_item is-completed">保存</span>
-          <span className="todo_Button_item is-cancel">キャンセル</span> 
+            <span className="todo_Button_item is-completed">保存</span>
+            <span className="todo_Button_item is-cancel">キャンセル</span>
           </div>
         : <span className="todo_Button_item is-edit">編集</span>
       }
-      </p>
-      <p className="todo_date">{year + "/" + month + "/" + day}</p>
+      </div>
+      <p className="todo_date">登録日：{year + "/" + month + "/" + day}</p>
       <p>差：{diffDay}</p>
       <div className="todo_closeButton" onClick={() => onDeleteTodo(todo.id)} >ｘ</div>
       <select className="todo_priority" name="priority" id="name">
