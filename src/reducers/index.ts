@@ -4,11 +4,12 @@ import { State, initialState } from "../model/todo";
 
 
 const todos = (state:State = initialState, action:any):State => {
+  let todoMaxNum = state.todos.length;
   switch(action.type) {
     case 'ADD_TODO':
       return {
         ...state,
-        todos:state.todos.concat(new Todo(action.id, action.description, action.editable, action.date)),
+        todos:state.todos.concat(new Todo(todoMaxNum, action.description, action.editable, action.date)),
     }
     case 'DELETE_TODO':
       return {
@@ -26,7 +27,6 @@ const todos = (state:State = initialState, action:any):State => {
       return {
         ...state,
         todos: state.todos.map((todo) => (todo.id === action.id) ? {...todo, description:action.description} : todo)
-
       }
     default:
       return state

@@ -1,8 +1,6 @@
-let nextTodoId = Math.random();
 
 export interface AddTodoAction {
   type: string;
-  id: number;
   description: string;
   date: Date
 }
@@ -15,7 +13,6 @@ export interface DeleteTodoAction {
 export const addTodo = (description: string, date: Date): AddTodoAction => {
   return {
     type: 'ADD_TODO',
-    id: nextTodoId++,
     description,
     date
   }
