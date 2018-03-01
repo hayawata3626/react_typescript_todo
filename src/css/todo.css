@@ -87,3 +87,6 @@
 .todo_editArea > .todo_Button_item {
 	width: 80px;
 }
+.todoDate {
+  margin-left: 20px;
+}

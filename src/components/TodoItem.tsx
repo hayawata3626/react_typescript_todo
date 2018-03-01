@@ -16,7 +16,6 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: Item
   const year = newDate.getFullYear();
   const month = newDate.getMonth() +1;
   const day = newDate.getDate();
-
   return (
     <li className="todo">
       {todo.editable
@@ -48,6 +47,7 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: Item
         <option value="Middle">Middle</option>
         <option value="Small">Small</option>
       </select>
+      <input type="date" className="todoDate" onChange={ () => alert("aaa")}/>
     </li>
   )
 }
