@@ -58,6 +58,10 @@
   background: #686868;
 }
 
+.todo_Button_item.is-cancel{
+  background:#3B5998;
+}
+
 .todo_editarea {
   padding: 10px;
   width: 100%;
