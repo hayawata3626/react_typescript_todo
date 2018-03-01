@@ -16,6 +16,7 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: Item
   const year = newDate.getFullYear();
   const month = newDate.getMonth() +1;
   const day = newDate.getDate();
+
   return (
     <li className="todo">
       {todo.editable
@@ -29,7 +30,7 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: Item
       }
       <div className="todo_Button" onClick={() => onToggleTodoEditable(todo.id)}>
       {todo.editable
-        ? <div>
+        ? <div className="todo_editArea">
             <span className="todo_Button_item is-completed">保存</span>
             <span className="todo_Button_item is-cancel" defaultValue={todo.description}
                   onClick={() => {
