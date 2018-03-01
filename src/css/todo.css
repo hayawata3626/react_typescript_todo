@@ -77,3 +77,13 @@
 	background: #eee;
 	background-size: 20px, 100%;
 }
+
+.todo_editArea {
+	display: flex;
+	width: 220px;
+	justify-content: space-between;
+}
+
+.todo_editArea > .todo_Button_item {
+	width: 80px;
+}
