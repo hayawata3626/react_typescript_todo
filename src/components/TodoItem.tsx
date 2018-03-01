@@ -9,16 +9,13 @@ interface ItemProps {
   onToggleTodoEditable: (id: number) => void;
 }
 
-let nowDate = new Date();
+let tempraryData:string;
 
 const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: ItemProps) => {
   const newDate = new Date(todo.date as Date);
   const year = newDate.getFullYear();
   const month = newDate.getMonth() +1;
   const day = newDate.getDate();
-  let diff = nowDate.getTime() - newDate.getTime();
-  let diffDay = Math.floor(diff / 86400000);
-
   return (
     <li className="todo">
       {todo.editable
@@ -34,13 +31,16 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: Item
       {todo.editable
         ? <div>
             <span className="todo_Button_item is-completed">保存</span>
-            <span className="todo_Button_item is-cancel">キャンセル</span>
+            <span className="todo_Button_item is-cancel" defaultValue={todo.description}
+                  onClick={() => {
+                    todo.description = tempraryData
+                    console.log(tempraryData);
+                    }}>キャンセル</span>
           </div>
-        : <span className="todo_Button_item is-edit">編集</span>
+        : <span className="todo_Button_item is-edit" onClick={() => {tempraryData = todo.description;}}>編集</span>
       }
       </div>
       <p className="todo_date">登録日：{year + "/" + month + "/" + day}</p>
-      <p>差：{diffDay}</p>
       <div className="todo_closeButton" onClick={() => onDeleteTodo(todo.id)} >ｘ</div>
       <select className="todo_priority" name="priority" id="name">
         <option value="Large">Large</option>
