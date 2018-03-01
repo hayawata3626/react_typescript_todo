@@ -1,4 +1,4 @@
-let nextTodoId = 0;
+let nextTodoId = Math.random();
 
 export interface AddTodoAction {
   type: string;
