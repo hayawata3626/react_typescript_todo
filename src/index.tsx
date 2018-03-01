@@ -4,10 +4,10 @@ import { Provider } from 'react-redux'
 import { createStore, compose } from 'redux'
 import App from './components/App';
 import todos from './reducers/index';
-import persistState from 'redux-localstorage';
+import  reduxLocalstorage from 'redux-localstorage';
 
 const enhancer = compose(
-  persistState()
+  reduxLocalstorage()
 )
 
 let store = createStore(todos, enhancer);
