@@ -10,12 +10,25 @@ interface ItemProps {
 }
 
 let tempraryData:string;
+let todoDateArr:any = [];
+
+const registerTodoDate = (id: number, date: string) => {
+  todoDateArr.push({id,date})
+  console.log(todoDateArr);
+  localStorage.setItem("date", JSON.stringify(todoDateArr))
+  localStorage.getItem('')
+}
+
+function compareTodoDate(){
+  const newDate = new Date();
+  let registerdate = localStorage.getItem('date')
+  console.log(registerdate);
+  console.log(newDate);
+}
+
+window.addEventListener('load', compareTodoDate, false );
 
 const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: ItemProps) => {
-  const newDate = new Date(todo.date as Date);
-  const year = newDate.getFullYear();
-  const month = newDate.getMonth() +1;
-  const day = newDate.getDate();
   return (
     <li className="todo">
       {todo.editable
@@ -31,23 +44,21 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: Item
       {todo.editable
         ? <div className="todo_editArea">
             <span className="todo_Button_item is-completed">保存</span>
-            <span className="todo_Button_item is-cancel" defaultValue={todo.description}
-                  onClick={() => {
-                    todo.description = tempraryData
-                    console.log(tempraryData);
-                    }}>キャンセル</span>
+            <span
+              className="todo_Button_item is-cancel" defaultValue={todo.description}
+              onClick={() => {todo.description = tempraryData}}>キャンセル
+             </span>
           </div>
         : <span className="todo_Button_item is-edit" onClick={() => {tempraryData = todo.description;}}>編集</span>
       }
       </div>
-      <p className="todo_date">登録日：{year + "/" + month + "/" + day}</p>
       <div className="todo_closeButton" onClick={() => onDeleteTodo(todo.id)} >ｘ</div>
       <select className="todo_priority" name="priority" id="name">
         <option value="Large">Large</option>
         <option value="Middle">Middle</option>
         <option value="Small">Small</option>
       </select>
-      <input type="date" className="todoDate" onChange={ () => alert("aaa")}/>
+      <input type="date" className="todoDate" onChange={ (e) => registerTodoDate(todo.id, e.target.value)}/>
     </li>
   )
 }
