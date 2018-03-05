@@ -1,28 +1,21 @@
 import * as React from 'react';
 import '../css/todo.css';
 import { Todo } from '../model/todo';
+const moment = require('moment');
 
 interface ItemProps {
   todo: Todo;
   onDeleteTodo: (id: number) => void;
   onEditTodo: (id: number, description: string) => void;
   onToggleTodoEditable: (id: number) => void;
+  onEditDate: (id: number, date:string) => void;
 }
 
 let tempraryData:string;
-let currentTime = new Date();
 
-const registerTodoDate = (id: number, date: string) => {
-  // todoDateArr.push({id,date})
-  // localStorage.setItem("date", JSON.stringify(todoDateArr))
-  // console.log(stoargeData, "stoargeData");
-  // console.log(todoDateArr);
-}
-
-const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: ItemProps) => {
+const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable, onEditDate }: ItemProps) => {
   let todoDate = new Date(todo.date)
-  let diff = currentTime.getTime() - todoDate.getTime();
-  console.log(diff);
+  let Datediff = Math.abs(moment().diff(moment(todoDate), "days"));
   return (
     <li className="todo">
       {todo.editable
@@ -52,14 +45,14 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: Item
         <option value="Middle">Middle</option>
         <option value="Small">Small</option>
       </select>
-      <p>{todo.date}</p>
+      <p className="todoRegisterDate"><i className="far fa-clock"></i>{todo.date}</p>
       <p>
-        {todoDate < currentTime
-          ? <span className="todoDate_limit is-over">期限切れです</span>
-          : <span className="todoDate_limit">期限内です</span>
+        {Datediff >= 1
+          ? <span className="todoDate_limit">残り{`${Datediff}`}日です</span>
+          : <span className="todoDate_limit is-over">期限切れです</span>
          }
       </p>
-      <input type="date" className="todoDate" onChange={ (e) => registerTodoDate(todo.id, e.target.value)}/>
+      <input type="date" className="todoDate" onChange={ (e) => onEditDate(todo.id, e.target.value)}/>
     </li>
   )
 }
