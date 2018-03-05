@@ -11,10 +11,11 @@ export interface StateFromProps {
 export interface DispatchFromProps  {
 	onDeleteTodo: (id:number) => void;
   onToggleTodoEditable: (id:number) => void;
-  onEditTodo: (id:number, description:string) => void;
+	onEditTodo: (id:number, description:string) => void;
+	onEditDate: (id:number, date:string) => void;
 }
 
-const TodoList = ({todos, onDeleteTodo, onEditTodo, onToggleTodoEditable}:StateFromProps & DispatchFromProps) => {
+const TodoList = ({todos, onDeleteTodo, onEditTodo, onToggleTodoEditable, onEditDate}:StateFromProps & DispatchFromProps) => {
 	return(
 		<ul className="todos">
 			{todos.map((todo:Todo) => {
@@ -24,7 +25,8 @@ const TodoList = ({todos, onDeleteTodo, onEditTodo, onToggleTodoEditable}:StateF
 						todo={todo}
 						onDeleteTodo={onDeleteTodo}
             onEditTodo={onEditTodo}
-            onToggleTodoEditable={onToggleTodoEditable}
+						onToggleTodoEditable={onToggleTodoEditable}
+						onEditDate={onEditDate}
 					/>
 				)
 			}

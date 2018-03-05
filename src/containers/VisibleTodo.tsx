@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import TodoList, { StateFromProps, DispatchFromProps } from '../components/TodoList'
 import { Dispatch } from 'react-redux';
-import { deleteTodo, toggleEditable, editTodo } from '../actions'
+import { deleteTodo, toggleEditable, editTodo, editDate } from '../actions'
 import { State } from '../model/todo';
 import { Action } from 'redux';
 
@@ -13,7 +13,8 @@ const deleteDispatchToProps = (dispatch: Dispatch<Action>):DispatchFromProps => 
   return {
 		onDeleteTodo: (id: number) => {dispatch(deleteTodo(id))},
     onToggleTodoEditable: (id: number) => {dispatch(toggleEditable(id))},
-    onEditTodo: (id:number, description:string) => (dispatch(editTodo(id, description)))
+		onEditTodo: (id:number, description:string) => (dispatch(editTodo(id, description))),
+		onEditDate: (id:number, date:string) => (dispatch(editDate(id, date)))
   }
 }
 

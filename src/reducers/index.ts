@@ -34,6 +34,11 @@ const todos = (state:State = initialState, action:any):State => {
         ...state,
         todos: state.todos.map((todo) => (todo.id === action.id) ? {...todo, description:action.description} : todo)
       }
+    case 'EDIT_DATE':
+      return {
+        ...state,
+        todos: state.todos.map((todo) => (todo.id === action.id) ? {...todo, date:action.date} : todo)
+      }
     default:
       return state
   }

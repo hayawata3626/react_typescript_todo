@@ -1,9 +1,11 @@
 import * as React from 'react';
 import '../css/addtodo.css'
 
+
 const AddTodo = ({onTodoClick}: any) => {
   let input:any
-  let inputDate:any
+	let inputDate:any
+	let result;
   return(
     <div>
     <form
@@ -12,7 +14,7 @@ const AddTodo = ({onTodoClick}: any) => {
         e.preventDefault()
         if (!input.value.trim()) {
           return
-        }
+				}
         onTodoClick(input.value, inputDate)
         input.value = ""
       }}
@@ -30,6 +32,7 @@ const AddTodo = ({onTodoClick}: any) => {
       onChange={(e) => {inputDate = e.target.value}}
     />
     <button type="submit" className="submitButton">Submit</button>
+		{result ? <div>OK</div>: <span>タスク名を入力してください</span>}
     </form>
     </div>
 	)

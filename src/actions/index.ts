@@ -39,3 +39,11 @@ export const toggleEditable = (id: number) => {
     id
   }
 }
+
+export const editDate = (id: number, date:string) => {
+  return {
+    type: 'EDIT_DATE',
+    id,
+    date
+  }
+}
