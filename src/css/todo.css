@@ -87,10 +87,13 @@
 .todo_editArea > .todo_Button_item {
 	width: 80px;
 }
-.todoDate {
-  margin-left: 20px;
-}
 
 .todoDate_limit.is-over {
 	color:red;
+}
+
+.todoRegisterDate {
+	color:gray;
+	font-size: 12px;
+	margin: 8px 0;
 }
