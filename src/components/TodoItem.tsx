@@ -10,25 +10,19 @@ interface ItemProps {
 }
 
 let tempraryData:string;
-let todoDateArr:any = [];
+let currentTime = new Date();
 
 const registerTodoDate = (id: number, date: string) => {
-  todoDateArr.push({id,date})
-  console.log(todoDateArr);
-  localStorage.setItem("date", JSON.stringify(todoDateArr))
-  localStorage.getItem('')
+  // todoDateArr.push({id,date})
+  // localStorage.setItem("date", JSON.stringify(todoDateArr))
+  // console.log(stoargeData, "stoargeData");
+  // console.log(todoDateArr);
 }
-
-function compareTodoDate(){
-  const newDate = new Date();
-  let registerdate = localStorage.getItem('date')
-  console.log(registerdate);
-  console.log(newDate);
-}
-
-window.addEventListener('load', compareTodoDate, false );
 
 const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: ItemProps) => {
+  let todoDate = new Date(todo.date)
+  let diff = currentTime.getTime() - todoDate.getTime();
+  console.log(diff);
   return (
     <li className="todo">
       {todo.editable
@@ -58,6 +52,13 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable }: Item
         <option value="Middle">Middle</option>
         <option value="Small">Small</option>
       </select>
+      <p>{todo.date}</p>
+      <p>
+        {todoDate < currentTime
+          ? <span className="todoDate_limit is-over">期限切れです</span>
+          : <span className="todoDate_limit">期限内です</span>
+         }
+      </p>
       <input type="date" className="todoDate" onChange={ (e) => registerTodoDate(todo.id, e.target.value)}/>
     </li>
   )

@@ -90,3 +90,7 @@
 .todoDate {
   margin-left: 20px;
 }
+
+.todoDate_limit.is-over {
+	color:red;
+}

@@ -8,7 +8,7 @@ export class Todo {
     this.id = id
     this.description = description
     this.editable = false
-    this.date = new Date();
+    this.date = date;
   }
 }
 
