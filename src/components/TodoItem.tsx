@@ -19,7 +19,6 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable, onEdit
   let dateFlag = todoDate >= currentDate ? true : false;
   let dayDiff = Math.abs(moment().diff(moment(todoDate), "days", true));
   let realDiff = Math.round(dayDiff)
-  debugger
   return (
     <li className="todo">
       {todo.editable
@@ -53,7 +52,7 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable, onEdit
       <p>
         {dateFlag && realDiff >= 0
           ? <span className="todoDate_limit">残り{`${realDiff}`}日です</span>
-          : <span className="todoDate_limit is-over">期限切れです</span> 
+          : <span className="todoDate_limit is-over">期限切れです</span>
          }
       </p>
       <input type="date" className="todoDate" onChange={ (e) => onEditDate(todo.id, e.target.value)}/>
