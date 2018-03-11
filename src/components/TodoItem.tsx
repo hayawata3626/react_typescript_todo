@@ -15,7 +15,11 @@ let tempraryData:string;
 
 const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable, onEditDate }: ItemProps) => {
   let todoDate = new Date(todo.date)
-  let Datediff = Math.abs(moment().diff(moment(todoDate), "days"));
+  let currentDate = new Date();
+  let dateFlag = todoDate >= currentDate ? true : false;
+  let dayDiff = Math.abs(moment().diff(moment(todoDate), "days", true));
+  let realDiff = Math.round(dayDiff)
+  debugger
   return (
     <li className="todo">
       {todo.editable
@@ -47,9 +51,9 @@ const TodoItem = ({ todo, onDeleteTodo, onEditTodo, onToggleTodoEditable, onEdit
       </select>
       <p className="todoRegisterDate"><i className="far fa-clock"></i>{todo.date}</p>
       <p>
-        {Datediff >= 1
-          ? <span className="todoDate_limit">残り{`${Datediff}`}日です</span>
-          : <span className="todoDate_limit is-over">期限切れです</span>
+        {dateFlag && realDiff >= 0
+          ? <span className="todoDate_limit">残り{`${realDiff}`}日です</span>
+          : <span className="todoDate_limit is-over">期限切れです</span> 
          }
       </p>
       <input type="date" className="todoDate" onChange={ (e) => onEditDate(todo.id, e.target.value)}/>
